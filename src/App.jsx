@@ -19,9 +19,12 @@ import {
   Settings2,
   ShieldCheck,
   Sparkles,
+  Sprout,
   Users,
   X,
 } from 'lucide-react'
+import omniChildImage from './assets/omni_child.jpg'
+import GrowthPassport from './GrowthPassport.jsx'
 import './App.css'
 
 const iconByName = {
@@ -30,6 +33,7 @@ const iconByName = {
   file: FileText,
   chart: BarChart3,
   users: Users,
+  sprout: Sprout,
 }
 
 const demoAccounts = [
@@ -239,8 +243,10 @@ function App() {
     <div className="app-shell" style={currentOrganization ? { '--tenant-primary': currentOrganization.primaryColor, '--tenant-accent': currentOrganization.accentColor } : undefined}>
       <aside className={`sidebar ${mobileNavOpen ? 'sidebar-open' : ''}`}>
         <a className="brand-mark" href="#overview" onClick={(event) => { event.preventDefault(); navigate('overview') }}>
-          <span className="brand-symbol"><Layers3 size={17} strokeWidth={2.2} /></span>
-          <span>FIELDNOTE<span className="brand-period">.</span></span>
+          <span className="brand-symbol">
+            <img src={omniChildImage} alt="" />
+          </span>
+          <span>OmniChild<span className="brand-period">.</span></span>
         </a>
         <div className="sidebar-divider" />
         <div className="sidebar-label">{isPlatformAdmin && !viewingOrganization ? 'PLATFORM' : 'WORKSPACE'}</div>
@@ -292,7 +298,10 @@ function App() {
           {section === 'settings' && isOrgAdmin && organizationDetails && (
             <WorkspaceSettings organization={organizationDetails.organization} menuSettings={organizationDetails.menuSettings} onSaveBranding={saveBranding} onSaveMenus={saveMenus} />
           )}
-          {(!isPlatformAdmin || viewingOrganization) && section !== 'settings' && organizationDetails && (
+          {(!isPlatformAdmin || viewingOrganization) && section === 'growth-passport' && organizationDetails && (
+            <GrowthPassport />
+          )}
+          {(!isPlatformAdmin || viewingOrganization) && section !== 'settings' && section !== 'growth-passport' && organizationDetails && (
             <WorkspacePage organization={currentOrganization} menus={workspaceMenus} section={section} user={user} />
           )}
         </div>
@@ -307,11 +316,11 @@ function LoginScreen({ email, password, error, busy, onEmail, onPassword, onSubm
     <main className="login-screen">
       <section className="login-panel">
         <a className="brand-mark login-brand" href="#home">
-          <span className="brand-symbol"><Layers3 size={17} strokeWidth={2.2} /></span>
-          <span>FIELDNOTE<span className="brand-period">.</span></span>
+          <span className="brand-symbol"><img src={omniChildImage} alt="" /></span>
+          <span>OmniChild<span className="brand-period">.</span></span>
         </a>
         <div className="login-form-wrap">
-          <div className="eyebrow"><span className="eyebrow-line" />A QUIETER WAY TO WORK</div>
+          <div className="eyebrow"><span className="eyebrow-line" />The rhythm of childcare, tailored to every child.</div>
           <h1>Good to see<br />you again.</h1>
           <p className="login-intro">Sign in to your workspace and pick up where your team left off.</p>
           <form className="login-form" onSubmit={onSubmit}>
@@ -335,7 +344,8 @@ function LoginScreen({ email, password, error, busy, onEmail, onPassword, onSubm
       <section className="login-art" aria-label="Workspace preview">
         <div className="art-image" />
         <div className="art-overlay" />
-        <div className="art-note"><div className="art-note-top"><span>CEDAR & STONE</span><span><Sparkles size={14} /> 01 / 03</span></div><p>“Make room<br />for meaningful work.”</p><div className="art-note-bottom"><span>YOUR WORKSPACE, YOUR WAY</span><span className="art-progress"><i /></span></div></div>
+        <div className="art-note"><div className="art-note-top"><span>CEDAR & STONE</span><span><Sparkles size={14} /> 01 / 03</span>
+        </div><p>“The rhythm of childcare, tailored to every child.”</p><div className="art-note-bottom"><span>YOUR WORKSPACE, YOUR WAY</span><span className="art-progress"><i /></span></div></div>
         <div className="art-caption"><span>FIELDNOTE / 001</span><span>DESIGNED FOR TEAMS THAT CARE</span></div>
       </section>
     </main>

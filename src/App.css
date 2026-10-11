@@ -4,6 +4,7 @@ button { cursor: pointer; }
 .sidebar { position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; padding: 27px 17px 16px; color: #e6ece7; background: #202c28; z-index: 20; }
 .brand-mark { display: inline-flex; align-items: center; gap: 10px; padding: 0 8px; color: #f6f6f1; font: 800 13px/1 var(--display); letter-spacing: 0; text-decoration: none; }
 .brand-symbol { display: grid; place-items: center; width: 29px; height: 29px; color: #243e35; background: #d7a681; border-radius: 8px 8px 8px 3px; }
+.brand-symbol img { display: block; width: 22px; height: 22px; border-radius: 5px; object-fit: cover; }
 .brand-period { color: #d99b73; }
 .sidebar-divider { height: 1px; margin: 27px 4px 25px; background: rgba(255,255,255,.12); }
 .sidebar-label { padding: 0 11px; color: #8c9a92; font-size: 9px; font-weight: 700; letter-spacing: 1.1px; }
@@ -263,7 +264,7 @@ button { cursor: pointer; }
 .demo-option svg:last-child { margin-left: auto; color: #97a198; }
 .login-foot { display: flex; justify-content: space-between; gap: 10px; color: #9ba49d; font-size: 8px; }
 .login-art { position: relative; min-height: 100vh; overflow: hidden; color: #fff; background: #4d5a4c; }
-.art-image { position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1900&q=85') center 48% / cover; transform: scale(1.02); animation: art-drift 16s ease-in-out infinite alternate; }
+.art-image { position: absolute; inset: 0; background: url('./assets/omni_child.jpg') center 48% / cover; transform: scale(1.02); animation: art-drift 16s ease-in-out infinite alternate; }
 @keyframes art-drift { from { transform: scale(1.02); } to { transform: scale(1.08); } }
 .art-overlay { position: absolute; inset: 0; background: linear-gradient(130deg, rgba(25,46,36,.15), rgba(20,35,27,.13) 40%, rgba(20,36,30,.77)); }
 .art-note { position: absolute; right: clamp(28px, 8vw, 115px); bottom: 14%; width: min(420px, 62%); padding: 18px 0; border-top: 1px solid rgba(255,255,255,.55); border-bottom: 1px solid rgba(255,255,255,.35); }
